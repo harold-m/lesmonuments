@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Liste des monuments</div>
+        <div class="panel-body" id="div_entete">
+            <div class="entete"><button class="btn btn-primary" (click)="onGetMonument()">Les monuments</button></div>
+
+            <div class="col">
+                <div ngbDropdown>
+                    <button class="btn btn-primary" ngbDropdownToggle>Filtrer selon le lieu</button>
+                    <div ngbDropdownMenu="gfg">
+                        <button ngbDropdownItem>Montpellier</button>
+                        <button ngbDropdownItem (click)="monumentOfUzes()">Uzes</button>
+                        <button ngbDropdownItem (click)="monumentOfPezenas()">Pezenas</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entete">
+                <form #f="ngForm" (ngSubmit)="Onsearch(f.value)">
+                    <input type="text" name="search" ngModel>
+                    <button type="submit" class="btn btn-primary">search</button>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="panel-body">
+            <table *ngIf="monuments" class="table table-bordered">
+                <tr>
+                    <th class="p-2 bg-light border">ID</th>
+                    <th class="p-2 bg-light border">Nom</th>
+                    <th class="p-2 bg-light border">Proprietaire</th>
+                    <th class="p-2 bg-light border">type de monument</th>
+                    <th class="p-2 bg-light border">longitude</th>
+                    <th class="p-2 bg-light border">latitude</th>
+                    <th class="p-2 bg-light border">Lieu</th>
+                    <th class="p-2 bg-light border">Célébrités</th>
+                    <th class="p-2 bg-light border">Action</th>
+                </tr>
+                <tr *ngFor="let m of monuments" class="mx-auto">
+                    <td class="p-2 bg-light border">{{m.codeM}}</td>
+                    <td class="p-2 bg-light border">{{m.nom}}</td>
+                    <td class="p-2 bg-light border">{{m.proprietaire}}</td>
+                    <td class="p-2 bg-light border">{{m.typeMonument}}</td>
+                    <td class="p-2 bg-light border">{{m.longitude}}</td>
+                    <td class="p-2 bg-light border">{{m.latitude}}</td>
+                    <td class="p-2 bg-light border">{{m.lieu.codeInsee}}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-success"><a
+                                href="http://localhost:4200/newmonument">Ajouter</a></button>
+                        <button type="button" class="btn btn-outline-danger"
+                            (click)="oneDeleteMonument('http://localhost:8080/monuments/'+m.codeM)">Supprimer</button>
+                    </td>
+                </tr>
+
+
+
+            </table>
+        </div>
+
+    </div>
+</div>

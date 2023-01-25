@@ -1,0 +1,11 @@
+#div_entete {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+
+
+}
+
+.col {
+    margin-left: 10px;
+}

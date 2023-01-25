@@ -1,0 +1,7 @@
+{
+    "/api/monuments": {
+        "target": "http://localhost:8080/monuments",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
